@@ -25,7 +25,7 @@ SECRET_KEY = 'kf=m3nrj15vjd_!x!mqm-wxp#)f^wwe^z^ez=03!!hs$)yy@c@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['157.245.211.191']
+ALLOWED_HOSTS = ['157.245.211.191', 'projectsparrow.com.br/']
 
 
 # Application definition
