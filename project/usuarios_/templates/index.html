@@ -32,6 +32,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
+		{% if error_messages %}
+			<div class="container">
+				<h4 class="alert alert-danger">
+					{{error_messages}}
+				</h4>
+			</div>
+		{% endif %}
+		
 <header class="py-4">
 	<div class="container">
 			<div id="logo">

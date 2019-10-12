@@ -19,7 +19,9 @@ def home(request):
 def login_(request):
     email = request.POST.get('email')
     password = request.POST.get('password')
-    user = authenticate(request, username=email, password=password)
+    user = authenticate(request=request, username=email, password=password)
+    if user is None:
+        return render(request,'index.html',{'error_messages' : 'Login invalid!'})
     login(request,user)
     return redirect('/home')
 
