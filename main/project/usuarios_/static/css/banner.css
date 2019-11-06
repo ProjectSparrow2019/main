@@ -1,0 +1,55 @@
+#banner{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#home{
+    overflow: hidden;
+}
+
+#home .bg-banner{
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+}
+
+#conteudo-banner{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#btn-banner{
+    background-color: whitesmoke;
+    padding: 15px 25px;
+    transition: all .4s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,.4);
+}
+#btn-banner:hover{
+    background: #000000;
+    color: #ffffff;
+}
+
+#container-img-banner img{
+    animation: pulse 5.0s infinite ease-in-out;
+    animation-direction: alternate;
+}
+
+#conteudo-banner h1{
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        filter: grayscale(100%);
+
+    }
+    100% {
+        transform: scale(1.1);
+    }
+}

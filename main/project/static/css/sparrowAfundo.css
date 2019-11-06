@@ -1,0 +1,14 @@
+/*-- offered services bottom --*/
+.video-right p{
+	font-size: 16px;
+    color: #666;
+}
+/*-- //offered services bottom --*/
+
+#img-fundo{
+    flex-direction: column;
+    justify-content: space-between;
+}
+#img-fundo img{
+    margin-bottom: 20px;
+}

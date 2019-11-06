@@ -1,0 +1,96 @@
+
+
+.login-icon a,.login-icon a:hover {
+    border: 2px solid #fff;
+    padding: 0.4em 1.7em;
+    color: #6a67ce;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: block;
+    font-size: 1em;
+    background: #fff;
+    box-shadow: 0 0px 45px rgba(0, 0, 0, .2);
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
+}
+
+/*-- popup --*/
+.popup-effect {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 0ms;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 99;
+}
+
+.popup-effect:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    background: #fff;
+    border-radius: 4px;
+    max-width: 500px;
+    position: relative;
+    margin: 8em auto;
+    padding: 3em 2em;
+    z-index: 999;
+}
+.popup p {
+    font-size: 15px;
+    color: #777;
+}
+
+.popup .close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
+}
+
+.popup iframe {
+    width: 100%;
+    height: 250px;
+    border: none;
+}
+.login .btn {
+    border: 2px solid #6a67ce;
+    background: #6a67ce;
+    color: #fff;
+    font-weight: 500;
+    letter-spacing: 1px;
+    font-size: 15px;
+    border-radius: 0px;
+	-webkit-border-radius: 0px;
+    -o-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    padding: 8px 25px;
+}
+.login .btn:hover {
+    opacity: 0.9;
+}
+.login p a {
+    font-size: 14px;
+    color: #999;
+}
+.login label {
+    font-size: 15px;
+    color: #666;
+    letter-spacing: .5px;
+}
+
+/*-- //popup --*/

@@ -1,0 +1,560 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Project Sparrow</title>
+
+    <link href="{% static 'css/index.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/funcoes.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/login.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/portifolio.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/mediaQueries.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/team.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/banner.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/sparrowAfundo.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'css/footer.css' %}" rel='stylesheet'/><!-- custom css -->
+    <link href="{% static 'fontAwesome/fontawesome-free-5.11.2-web/css/all.css' %}" rel="stylesheet"> <!--load all styles -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>       
+		{% if error_messages %}
+		<div class="container">
+			<h4 class="alert alert-danger">
+				{{error_messages}}
+			</h4>
+		</div>
+	{% endif %} 
+    <!-- Navigation -->
+    <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="{% static 'img/logowhite.png' %}" class="img-fluid" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="true" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a id="hom" class="nav-link" href="#">HOME
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a id="sobre" class="nav-link" href="#about">SOBRE</a>
+            </li>
+            <li class="nav-item">
+              <a id="team" class="nav-link" href="#agents">EQUIPE</a>
+            </li>
+            <li class="nav-item">
+              <a id="port" class="nav-link" href="#portfolio">PORTIFOLIO</a>
+			</li>
+			{% if request.user.is_authenticated %}
+				<li class="nav-item"><a class="nav-link" href="#">Bem-vindo {{request.user.email}}</a></li>
+			{% endif %}
+            <li class="nav-item">
+              <div class="login-icon ml-lg-2">
+					{% if not request.user.is_authenticated %}
+					<a id="btn-login" class="user" href="#popup3" aria-expanded="false"> Login</a>
+				{% else %}
+				<a id="btn-login" class="user" href="{% url 'logout' %}" aria-expanded="false"> Logout</a>
+				{% endif %}
+              </div>
+              <div class="clear"></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <script type="text/javascript">
+      const menuMobile = document.getElementById("navbarResponsive");
+      document.getElementById("btn-login").addEventListener('click', function(){
+        menuMobile.classList.remove("show");
+      });
+      const menuMobile1 = document.getElementById("navbarResponsive");
+      document.getElementById("hom").addEventListener('click', function(){
+        menuMobile.classList.remove("show");
+      });
+      const menuMobile2 = document.getElementById("navbarResponsive");
+      document.getElementById("sobre").addEventListener('click', function(){
+        menuMobile.classList.remove("show");
+      });
+      const menuMobile3 = document.getElementById("navbarResponsive");
+      document.getElementById("team").addEventListener('click', function(){
+        menuMobile.classList.remove("show");
+      });
+      const menuMobile4 = document.getElementById("navbarResponsive");
+      document.getElementById("port").addEventListener('click', function(){
+        menuMobile.classList.remove("show");
+      });
+    </script>
+    <!-- Navigation -->
+
+    <!-- banner -->
+    <div class="banner" id="home">
+      <img src="{% static 'img/bg-banner.jpg' %}" alt="background" class="bg-banner"/>
+      <div id="banner" class="container">
+        <div class="row banner-text">
+          <div id="conteudo-banner" class="slider-info col-lg-6">
+            <div class="banner-info-grid mt-lg-5">
+                <h1 class="mt-5">Conheça o Projeto Sparrow</h1>
+                <p class="lead">Uma ferramenta voltada a identificar produtos anunciados 
+                  em marketplaces que violam direitos de Propriedade Intelectual.</p>
+            </div>
+              <a id="btn-banner" class="btn mr-2 text-capitalize" href="#about">Leia mais</a>
+          </div>
+            <div id="container-img-banner" class="col-lg-6 col-md-8 mt-lg-0 mt-sm-5 mt-3 banner-image text-lg-center">
+              <img src="{% static 'img/sparrow.png' %}" alt="Sparrow" class="img-fluid"/>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- //banner -->
+
+    <!-- about -->
+		<section class="about py-5" id="about">
+      <div class="container py-lg-5 py-sm-3">
+        <div class="row">
+          <div class="col-lg-3 about-left">	
+              <h1 class="mt-5">Sobre o Projeto</h1>
+          </div>
+          <div class="col-lg-5 col-md-7 about-text">
+            <h1 class="mt-5">Resumo </h1>
+            <p class="mt-3">Com a popularidade das mídias sociais e marketplaces na última década, 
+              é cada vez mais comum que se encontre anúncios que contenham um produto que viole os 
+              direitos de propriedade intelectual de alguma marca, então é necessário que haja algum 
+              método que possa auxiliar na prevenção destes anúncios ilegais.</p>
+            <p class="mt-2">No entanto, o objetivo desta pesquisa é a implementação de um algoritmo 
+              de aprendizado supervisionado aplicado ao reconhecer padrões, a fim de identificar 
+              produtos falsificados anunciados em marketplaces. </p>
+          </div> 
+          <div class="col-lg-4 col-md-5 about-img">
+            <img src="{% static 'img/1.png' %}" alt="" class="img-fluid"/>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- //about -->
+
+    <!-- why choose us -->
+		<section class="choose py-5" id="services">
+      <div class="container py-md-3">
+        <h3 class="heading mb-5">Funcionalidades Sparrow</h3>
+        <div class="feature-grids row">
+          <div class="col-lg-3 col-sm-6">
+            <div class="f1 icon1 p-4">
+              <div class="icon">
+                <span class="fa fa-file-import"></span>
+              </div>
+              <h3 class="my-3">Extração de dados automatizada</h3>
+              <p>O Sparrow faz uso de um famoso framework denominado Selenium, que é capaz de 
+                realizar extração de dados de uma maneira bem eficiente.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-sm-0 mt-4">
+            <div class="f1 icon2 p-4">
+              <div class="icon">
+                <span class="fa fa-brain"></span>
+              </div>
+              <h3 class="my-3">Sistema Especialista</h3>
+              <p>O Sparrow é especialista no reconhecimento de anúncios que contenham produtos 
+                falsificados na internet. Suas decisões são fundamentadas através de uma grande 
+                base de conhecimento.</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-lg-0 mt-4">
+            <div class="f1 icon3 p-4">
+              <div class="icon">
+                <span class="fab fa-leanpub"></span>
+              </div>
+              <h3 class="my-3">Apredizado Supervisionado</h3>
+              <p>Para uma melhor acurácia nas classificações, o Sparrow conta com um sistema de 
+                aprendizado supervisionado. Ele aprende através do feedback do usuário. 
+                &nbsp; &nbsp; &nbsp; &nbsp; </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-sm-6 mt-lg-0 mt-4">
+            <div class="f1 icon4 p-4">
+              <div class="icon">
+                <span class="fa fa-cloud"></span>
+              </div>
+              <h3 class="my-3">Cloud Computing</h3>
+              <p>Todo o processamento de dados é realizado na núvem, dando ao Sparrow uma maior 
+                agilidade, escalabilidade e permitindo fácil acesso em qualquer dispositivo. 
+                &nbsp; </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container py-md-3">
+          <h3 class="heading mb-5">Resultados Preliminares</h3>
+          <div class="feature-grids row">
+            <div class="col-lg-3 col-sm-6">
+              <div class="f1 icon1 p-4">
+                <div class="icon">
+                  <span class="fa fa-file-import"></span>
+                </div>
+                <h3 class="my-3">+15.000 Anúncios coletados de um único produto.</h3>
+                <p>O sistema de extração de dados conseguiu coletar em algumas horas, cerca de 
+                  15.200 anúncios suspeitos. </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-sm-0 mt-4">
+              <div class="f1 icon2 p-4">
+                <div class="icon">
+                  <span class="fa fa-brain"></span>
+                </div>
+                <h3 class="my-3">Base de conhecimento + 6.000 anúncios.</h3>
+                <p>Para uma maior precisão, o Sparrow usou como base em suas decisões, cerca de 
+                  + 6.000 anúncios, dentre eles anúncios originais e falsificados. </p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-lg-0 mt-4">
+              <div class="f1 icon3 p-4">
+                <div class="icon">
+                  <span class="fab fa-leanpub"></span>
+                </div>
+                <h3 class="my-3">Na dúvida, o Sparrow pergunta para você. </h3>
+                <p>Quando há duvidas na tomada de decisões, o Sparrow prefere ouvir o seu feedback.</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 mt-lg-0 mt-4">
+              <div class="f1 icon4 p-4">
+                <div class="icon">
+                  <span class="fa fa-cloud"></span>
+                </div>
+                <h3 class="my-3">Acurácia de + 90%</h3>
+                <p>O Sparrow mostrou-se eficiente ao ter uma taxa de 93,6% de acerto nos produtos 
+                  analisados. Dos 15.285 anúncios analisados, 69% eram originais e 31% falsos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+    </section>
+    <!-- //why choose us -->
+
+    <!-- video -->
+		<section class="video py-5" id="video">
+			<div class="container">
+				<div class="inner-sec-w3ls py-lg-5 py-3">
+					<div class="row">
+						<div class="col-lg-6 video-right px-lg-5 px-2">
+                <h1 class="mt-5">Projeto Sparrow mais a fundo</h1>
+                <p class="lead"> A venda de produtos falsificados na internet causa grande prejuízo 
+                  financeiro às empresas. Segundo pesquisas divulgadas por alguns portais de notícias, 
+                  estimativas indicam o Brasil é o 4º pais do mundo em que mais consome pirataria, 
+                  tendo prejuízos anuais de aproximadamente R$ 115 bilhões de reais. </p>
+                <p class="lead">Empresas que são vítimas deste comércio ilegal, sofrem cada vez mais
+                  com a desvalorização da marca e produto. Com a popularidade das mídias sociais e 
+                  marketplaces na última década, é cada vez mais comum que se encontre anúncios que 
+                  contenham um produto que viole os direitos de propriedade intelectual de alguma 
+                  marca, então é necessário que haja algum método que possa auxiliar na prevenção 
+                  destes anúncios ilegais. </p>
+                <p class="lead">O objetivo desta pesquisa é desenvolver um sistema especialista que 
+                  aplica Inteligência Artificial a fim de identificar anúncios e reconhecer produtos 
+                  falsificados em marketplaces.</p>
+                <p class="lead"> O propósito é auxiliar empresas na busca de produtos que violem os 
+                  seus direitos de propriedade intelectual. Utilizando aprendizado de máquina 
+                  supervisionado e técnicas de web scraping. </p>
+              </div>
+						<div id="img-fundo" class="col-lg-6 video-img mt-lg-0 mt-4">
+							<img src="{% static 'img/banner.png' %}" alt="" class="img-fluid">
+							<img src="{% static 'img/banner.png' %}" alt="" class="img-fluid">
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- //video -->
+
+    <!-- portfolio -->
+		<section class="portfolio py-5" id="portfolio">
+			<div class="container py-3">
+				<h3 class="heading text-capitalize mb-md-5 mb-4">Telas de software<span></span></h3>
+				<div class="row news-grids text-center">
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal1"><img src="{% static 'img/g1.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal2"><img src="{% static 'img/g2.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal3"><img src="{% static 'img/g3.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal4"><img src="{% static 'img/g4.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal5"><img src="{% static 'img/g5.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal6"><img src="{% static 'img/g6.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal7"><img src="{% static 'img/g7.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+					<div class="col-md-3 col-6 gal-img">
+						<a href="#gal8"><img src="{% static 'img/g8.jpg' %}" alt="portfolio image" class="img-fluid"></a>
+					</div>
+				</div>
+				<!-- portfolio popups -->
+					<!-- popup-->
+					<div id="gal1" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g1.jpg' %}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="gal2" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g2.jpg' %}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="gal3" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g3.jpg' %}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup3 -->
+					<!-- popup-->
+					<div id="gal4" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g4.jpg'%}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="gal5" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g5.jpg'%}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="gal6" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g6.jpg'%}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="gal7" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g7.jpg'%}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- popup-->
+					<div id="gal8" class="pop-overlay animate">
+						<div class="popup">
+							<img src="{% static 'img/g8.jpg'%}" alt="Popup Image" class="img-fluid" />
+							<p class="mt-4">Nulla viverra pharetra se, eget pulvinar neque pharetra ac int. placerat placerat dolor.</p>
+							<a class="close" href="#portfolio">&times;</a>
+						</div>
+					</div>
+					<!-- //popup -->
+					<!-- //portfolio popups -->
+			</div>
+		</section>
+		<!-- //Projects -->
+
+		<!-- Team page -->
+		<section class="section pt-5" id="agents">
+      <div class="container py-lg-5">
+        <h2 class="heading mb-sm-5 mb-4"> Time de Desenvolvimento</h2>
+        <div class="section_header">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 mb-5">
+              <div class="teamy_preview">
+                <img src="{% static 'img/team1.jpg'%}" class="teamy_avatar" alt="The demo photo">
+              </div>
+              <div class="teamy_content mt-3">
+                <h3 class="teamy_name">Suzan Lois</h3>
+                <span class="teamy_post">CEO/Founder</span>
+              </div>
+              <div class="teamy_back">
+                <div class="teamy_back-inner">
+                  <a href="#0" class="social"> 
+                    <span class="fab fa-linkedin-in"></span>
+                  </a>
+                  <a href="#0" class="social">
+                    <span class="fa fa-envelope-open"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-5">
+              <div class="teamy_preview">
+                <img src="{% static 'img/team2.jpg'%}" class="teamy_avatar" alt="The demo photo">
+              </div>
+              <div class="teamy_content mt-3">
+                <h3 class="teamy_name">Dora Caelan</h3>
+                <span class="teamy_post">Marketing Manager</span>
+              </div>
+              <div class="teamy_back">
+                <div class="teamy_back-inner">
+                  <a href="#0" class="social"> 
+                    <span class="fab fa-linkedin-in"></span>
+                  </a>
+                  <a href="#0" class="social">
+                    <span class="fa fa-envelope-open"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-5">
+              <div class="teamy_preview">
+                <img src="{% static 'img/team3.jpg'%}" class="teamy_avatar" alt="The demo photo">
+              </div>    
+              <div class="teamy_content mt-3">
+                <h3 class="teamy_name">Rosanna</h3>
+                <span class="teamy_post">Sales Executive</span>
+              </div>
+              <div class="teamy_back">
+                <div class="teamy_back-inner">
+                  <a href="#0" class="social"> 
+                    <span class="fab fa-linkedin-in"></span>
+                  </a>
+                  <a href="#0" class="social">
+                    <span class="fa fa-envelope-open"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6  mb-5">
+              <div class="teamy_preview">
+                <img src="{% static 'img/team4.jpg'%}" class="teamy_avatar" alt="The demo photo">
+              </div>
+              <div class="teamy_content mt-3">
+                <h3 class="teamy_name">Rose Alpha</h3>
+                <span class="teamy_post">Product Manager</span>
+              </div>
+              <div class="teamy_back">
+                <div class="teamy_back-inner">
+                  <a href="#0" class="social"> 
+                    <span class="fab fa-linkedin-in"></span>
+                  </a>
+                  <a href="#0" class="social">
+                    <span class="fa fa-envelope-open"></span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- //Team page -->		
+
+    <!-- copyright -->
+		<div class="copy-right-top border-top bottom">
+			<p id="text-footer" class="copy-right text-center py-4">&copy; 2019 Digital. All Rights Reserved | Design by
+				<a href="{% url 'index' %}"> Projeto Sparrow </a>
+			</p>
+		</div>
+    <!-- //copyright -->
+    
+    <!-- move top -->
+		<div class="move-top text-right">
+			<a href="#home" class="move-top"> 
+				<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+			</a>
+		</div>
+		<!-- move top -->
+
+    <!-- popup for login -->
+    <div id="popup3" class="popup-effect">
+      <div class="popup">
+          <div class="login px-sm-4 mx-auto mw-100">
+              <h5 class="text-center mb-4">Login to Digital</h5>
+              <form action="{% url 'login' %}" method="post">
+					{% csrf_token %}
+                  <div class="form-group">
+                      <label class="mb-2">Email address</label>
+                      <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="" required="">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  </div>
+                  <div class="form-group">
+                      <label class="mb-2">Password</label>
+                      <input type="password" class="form-control" name="password" id="exampleInputPassword1" placeholder="" required="">
+                  </div>
+                  <button type="submit" class="btn btn-primary submit mt-2">Login</button>
+                  <p class="text-center mt-2">
+                      <a href="#popup4"> Don't have an account?</a>
+                  </p>
+              </form>
+          </div>
+          <a class="close" href="#">&times;</a>
+      </div>
+    </div>
+    <!-- //popup for login -->
+
+    <!-- popup for register -->
+		<div id="popup4" class="popup-effect">
+			<div class="popup">
+				<div class="login px-sm-4 mx-auto mw-100">
+					<h5 class="text-center mb-4">Register Now</h5>
+					<form action="#" method="post">
+						<div class="form-group">
+							<label>Full Name</label>
+							<input type="text" class="form-control" id="validationDefault01" placeholder="" required="">
+						</div>
+						<div class="form-group">
+							<label>Email Address</label>
+							<input type="email" class="form-control" id="validationDefault02" placeholder="" required="">
+						</div>
+						<div class="form-group">
+							<label class="mb-2">Password</label>
+							<input type="password" class="form-control" id="password1" placeholder="" required="">
+						</div>
+						<div class="form-group">
+							<label>Confirm Password</label>
+							<input type="password" class="form-control" id="password2" placeholder="" required="">
+						</div>
+
+						<button type="submit" class="btn btn-primary submit">Register</button>
+						<p class="text-center mt-3">
+							<a href="#">By clicking Register, I agree to your terms</a>
+						</p>
+					</form>
+				</div>
+				<a class="close" href="#">&times;</a>
+			</div>
+		</div>
+		<!-- //popup for register -->
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>

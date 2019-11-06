@@ -1,0 +1,80 @@
+/*-- why choose us --*/
+h2.heading,h3.heading {
+    font-size: 45px;
+    color: #333;
+    letter-spacing: 0;
+    margin-top: 15px;
+}
+.choose{
+	background: #f8f9fa;
+}
+
+.portfolio{
+	background: #f8f9fa;
+}
+
+.f1 h3 {
+    font-size: 25px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+}
+.f1 p {
+    font-size: 16px;
+    color: #777;
+}
+.f1 span.fa, .fab{
+    text-align: center;
+    background: #f3f3f3;
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
+}
+.icon1 span.fa{
+	color: #ff4f81;
+    font-size: 30px;
+    line-height: 65px;
+}
+.icon2 span.fa{
+	color: #00aeff;
+    font-size: 30px;
+    line-height: 65px;
+}
+.icon3 span.fab{
+	color: #2dde98;
+    font-size: 30px;
+    line-height: 65px;
+}
+
+.icon4 span.fa{
+	color: #fe5000;
+    font-size: 30px;
+    line-height: 65px;
+}
+.f1{
+    box-shadow: 7px 7px 10px 0 rgba(76, 110, 245, .1);
+    background: #fff;
+	height: 465px;
+}
+/*-- why choose us --*/
+
+/*-- services page --*/
+.serv-grids h3 {
+    font-size: 20px;
+    color: #333;
+    letter-spacing: 1px;
+    line-height: 30px;
+    text-transform: capitalize;
+}
+.serv-grids span.fa{
+    text-align: center;
+    font-size: 30px;
+    background: #ffff;
+    height: 65px;
+    width: 65px;
+    line-height: 65px;
+	box-shadow: 7px 7px 10px 0 rgba(76, 110, 245, .1);
+}
+
+/*-- //services page --*/
+

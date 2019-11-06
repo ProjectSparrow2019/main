@@ -1,0 +1,70 @@
+/*-- team --*/
+/* common styles for visual styles */
+
+#agents{
+    /* padding-top: 10rem !important; */
+    display: flex;
+	align-items: center;
+}
+
+.teamy_name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 1px;
+}
+.teamy_post {
+    margin-top: .5em;
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #6f6f6f;
+    letter-spacing: 0.5px;
+}
+/* style 1 */
+
+.teamy_back-inner a:hover{
+    text-decoration: none;
+}
+
+.teamy_content,.teamy_back {
+    text-align: center;
+}
+.teamy_back-inner span.fa {
+    color: #999;
+    font-size: 14px;
+    margin: 10px 5px;
+    width: 15px;
+    line-height: 35px;
+    transition: 0.5s all;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+    -o-transition: 0.5s all;
+}
+.teamy_back-inner span.fab.fa-linkedin-in {
+    color: #3b5998;
+    background: none;
+    width: 20px;
+}
+.teamy_back-inner span.fab.fa-linkedin-in:hover {
+    opacity:0.8;
+}
+.teamy_back-inner span.fab.fa-twitter {
+    color: #1da1f2;
+    background: none;
+    width: 20px;
+}
+.teamy_back-inner span.fab.fa-twitter:hover{
+	opacity:0.8;
+}
+.teamy_back-inner span.fa.fa-envelope-open {
+    color: #dd4b39;
+}
+.teamy_back-inner span.fa.fa-envelope-open:hover {
+	opacity:0.8;
+}
+
+body img {
+    max-width: 100%;
+}
+/*-- //team --*/
